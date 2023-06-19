@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>App Service Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Handle form submission
+            $('form').submit(function(event) {
+                event.preventDefault();
+
+                // Get the form data
+                var formData = {
+                    // Add your form fields here
+                    // Example: 'name': $('#name').val(),
+                    //         'email': $('#email').val()
+                };
+
+                // Send a POST request to the server
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/data',
+                    data: JSON.stringify(formData),
+                    contentType: 'application/json',
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        // ...
+                    },
+                    error: function(error) {
+                        // Handle any errors
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>App Service Example</h1>
+
+    <form>
+        <!-- Add your form fields here -->
+        <!-- Example: <input type="text" id="name" name="name" placeholder="Name"> -->
+        <!--         <input type="email" id="email" name="email" placeholder="Email"> -->
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
